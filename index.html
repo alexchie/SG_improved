@@ -117,6 +117,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            mix-blend-mode: multiply;
         }
 
         @keyframes fly-along-path {
@@ -1393,12 +1394,12 @@
             const containerWidth = container.offsetWidth;
             const containerHeight = container.offsetHeight;
             
-            // 計算半圓航線路徑 (從左下到右下，經過中間頂部)
-            const startX = containerWidth * 0.05;  // 左側起點
+            // 計算半圓航線路徑 (從右邊到左邊，經過中間頂部)
+            const startX = containerWidth * 0.95;  // 右側起點
             const startY = containerHeight * 0.9;  // 底部
             const midX = containerWidth * 0.5;     // 中間
             const midY = containerHeight * 0.25;   // 頂部
-            const endX = containerWidth * 0.95;    // 右側終點
+            const endX = containerWidth * 0.05;    // 左側終點
             const endY = containerHeight * 0.9;    // 底部
             
             const pathD = `M ${startX} ${startY} Q ${midX} ${midY}, ${endX} ${endY}`;
