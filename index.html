@@ -702,10 +702,31 @@
             align-items: center;
             padding: 15px;
             border-bottom: 1px solid #e0e0e0;
+            gap: 15px;
         }
 
         .cart-item:last-child {
             border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .cart-item-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-info {
+            flex: 1;
         }
 
         .remove-item {
@@ -1372,10 +1393,13 @@
 
             cartItemsDiv.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
-                    <div>
-                        <strong>${item.name}</strong><br>
-                        ${item.description}<br>
-                        NT$ ${item.price} × ${item.quantity} = NT$ ${item.price * item.quantity}
+                    <div class="cart-item-content">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <strong>${item.name}</strong><br>
+                            ${item.description}<br>
+                            NT$ ${item.price} × ${item.quantity} = NT$ ${item.price * item.quantity}
+                        </div>
                     </div>
                     <button class="remove-item" onclick="removeFromCart(${index})">移除</button>
                 </div>
