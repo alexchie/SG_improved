@@ -929,6 +929,14 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             position: relative;
             animation: slideDown 0.4s ease;
+            /* 隐藏滚动条但保持滚动功能 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        /* 隐藏 Chrome/Safari 的滚动条 */
+        .brand-modal-content::-webkit-scrollbar {
+            display: none;
         }
 
         @keyframes fadeIn {
