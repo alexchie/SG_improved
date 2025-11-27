@@ -1245,7 +1245,7 @@
             <div id="cartItems"></div>
             <div class="total">
                 <div style="margin-bottom: 8px;">小計：NT$ <span id="subtotalPrice">0</span></div>
-                <div style="margin-bottom: 8px;">運費：NT$ <span id="shippingFee">40</span> <span id="shippingNote" style="color: #666; font-size: 0.9em;"></span></div>
+                <div style="margin-bottom: 8px;">運費：NT$ <span id="shippingFee">55</span> <span id="shippingNote" style="color: #666; font-size: 0.9em;"></span></div>
                 <div style="border-top: 2px solid #000; padding-top: 8px; font-size: 1.2em;">總計：NT$ <span id="totalPrice">0</span></div>
             </div>
 
@@ -1529,9 +1529,9 @@
             if (cart.length === 0) {
                 cartItemsDiv.innerHTML = '<p style="text-align: center; color: #999;">購物車是空的</p>';
                 document.getElementById('subtotalPrice').textContent = '0';
-                document.getElementById('shippingFee').textContent = '40';
+                document.getElementById('shippingFee').textContent = '55';
                 document.getElementById('shippingNote').textContent = '';
-                document.getElementById('totalPrice').textContent = '40';
+                document.getElementById('totalPrice').textContent = '55';
                 return;
             }
 
@@ -1554,7 +1554,7 @@
             `).join('');
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shippingFee = subtotal >= 600 ? 0 : 40;
+            const shippingFee = subtotal >= 600 ? 0 : 55;
             const total = subtotal + shippingFee;
 
             document.getElementById('subtotalPrice').textContent = subtotal;
@@ -1711,7 +1711,7 @@
             }
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shippingFee = subtotal >= 600 ? 0 : 40;
+            const shippingFee = subtotal >= 600 ? 0 : 55;
             const total = subtotal + shippingFee;
             const orderTime = new Date().toLocaleString('zh-TW');
 
@@ -1933,17 +1933,17 @@
                     </p>
                     
                     <p style="margin-top: 25px; margin-bottom: 10px; text-align: center; font-weight: 600; color: #333;">
-                        💁 客服聯絡
+                        💁 24小時客服聯絡
                     </p>
                     <p style="text-align: center; color: #555;">
-                        Line ID: <a href="https://line.me/ti/p/@946vdjfz" 
-                                    target="_blank" 
+                        Line ID: <a href="https://line.me/ti/p/@946vdjfz"
+                                    target="_blank"
                                     style="color: #06C755; font-weight: 600; text-decoration: none; border-bottom: 1px solid #06C755;">
                             @946vdjfz
                         </a>
                     </p>
                     <p style="text-align: center; color: #999; font-size: 0.9em; margin-top: 5px;">
-                        有任何問題都歡迎詢問！
+                        全年無休，有任何問題都歡迎詢問！
                     </p>
                 </div>
             </div>
@@ -1986,7 +1986,7 @@
                 <p style="margin-bottom: 15px;">
                     <strong>🚚 運費說明</strong><br>
                     • 單筆訂單滿 NT$ 600 免運費<br>
-                    • 未滿 NT$ 600 酌收運費 NT$ 80<br>
+                    • 未滿 NT$ 600 酌收運費 NT$ 55<br>
                     • 外島地區運費另計
                 </p>
 
@@ -2005,7 +2005,7 @@
                 </p>
 
                 <p style="margin-top: 20px; text-align: center; font-weight: 600; color: #333;">
-                    如有任何疑問，歡迎透過客服聯繫我們！
+                    如有任何疑問，歡迎透過24小時客服聯繫我們！
                 </p>
             </div>
         </div>
@@ -2047,7 +2047,7 @@
 
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
                     <p style="text-align: center; color: #666; font-size: 0.95em; margin-bottom: 10px;">
-                        還有問題嗎？歡迎透過客服聯繫我們
+                        還有問題嗎？歡迎透過24小時客服聯繫我們
                     </p>
                     <p style="text-align: center;">
                         <a onclick="closeJoinUsModal(); openContactModal();"
@@ -2072,7 +2072,7 @@
 
                 <div style="background: linear-gradient(135deg, #06C755 0%, #05b34a 100%); padding: 30px; border-radius: 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 8px 25px rgba(6, 199, 85, 0.3);">
                     <p style="color: white; font-size: 1.3em; margin-bottom: 15px; font-weight: 600;">
-                        📱 Line 官方客服
+                        📱 Line 24小時客服
                     </p>
                     <p style="margin-bottom: 20px;">
                         <a href="https://line.me/ti/p/@946vdjfz"
@@ -2090,14 +2090,11 @@
                     <p style="margin-bottom: 15px; text-align: center; font-weight: 600; color: #333;">
                         ⏰ 客服時間
                     </p>
-                    <p style="text-align: center; color: #555; margin-bottom: 5px;">
-                        週一至週五：10:00 - 19:00
-                    </p>
-                    <p style="text-align: center; color: #555; margin-bottom: 5px;">
-                        週六：10:00 - 17:00
+                    <p style="text-align: center; color: #06C755; font-weight: 600; font-size: 1.1em; margin-bottom: 5px;">
+                        全年無休 24 小時服務
                     </p>
                     <p style="text-align: center; color: #999; font-size: 0.9em;">
-                        （週日及國定假日休息）
+                        隨時為您解答任何問題
                     </p>
                 </div>
 
