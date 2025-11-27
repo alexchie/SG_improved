@@ -1140,9 +1140,97 @@
             font-weight: 600;
         }
 
+        /* 熱賣商品樣式 */
+        .hot-product-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #fff;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .hot-product-item:hover {
+            border-color: #ffd700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+
+        .hot-product-rank {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: #ffd700;
+            min-width: 60px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hot-product-rank.rank-1 {
+            color: #ffd700;
+        }
+
+        .hot-product-rank.rank-2 {
+            color: #c0c0c0;
+        }
+
+        .hot-product-rank.rank-3 {
+            color: #cd7f32;
+        }
+
+        .hot-product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .hot-product-info {
+            flex: 1;
+        }
+
+        .hot-product-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .hot-product-description {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
         @media (max-width: 768px) {
             .logo-container img {
                 max-width: 140px;
+            }
+
+            .hot-product-item {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .hot-product-rank {
+                font-size: 2em;
+                min-width: 50px;
+            }
+
+            .hot-product-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .hot-product-name {
+                font-size: 1.05em;
+            }
+
+            .hot-product-description {
+                font-size: 0.9em;
             }
         }
     </style>
@@ -1159,7 +1247,7 @@
                 <li><a onclick="openBrandModal()">品牌理念</a></li>
                 <li><a onclick="openRulesModal()">代購規則</a></li>
                 <li><a onclick="openJoinUsModal()">加入我們</a></li>
-                <li><a onclick="openContactModal()">聯絡客服</a></li>
+                <li><a onclick="openHotProductsModal()">熱賣商品</a></li>
             </ul>
         </nav>
 
@@ -2045,83 +2133,63 @@
                     免費加入 • 匿名參與 • 隨時退出
                 </p>
 
+                <!-- 客服聯絡資訊 -->
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
-                    <p style="text-align: center; color: #666; font-size: 0.95em; margin-bottom: 10px;">
-                        還有問題嗎？歡迎透過24小時客服聯繫我們
+                    <p style="margin-bottom: 20px; text-align: center; font-size: 1.1em; font-weight: 600; color: #333;">
+                        💁 24小時客服聯絡
                     </p>
-                    <p style="text-align: center;">
-                        <a onclick="closeJoinUsModal(); openContactModal();"
-                           style="color: #06C755; font-weight: 600; cursor: pointer; text-decoration: underline;">
-                            前往聯絡客服 →
-                        </a>
-                    </p>
+
+                    <div style="background: linear-gradient(135deg, #06C755 0%, #05b34a 100%); padding: 25px; border-radius: 15px; margin-bottom: 20px; text-align: center; box-shadow: 0 8px 25px rgba(6, 199, 85, 0.3);">
+                        <p style="color: white; font-size: 1.2em; margin-bottom: 15px; font-weight: 600;">
+                            📱 Line 官方客服
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <a href="https://line.me/ti/p/@946vdjfz"
+                               target="_blank"
+                               style="display: inline-block; background: white; color: #06C755; padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.2em; transition: all 0.3s ease;">
+                                @946vdjfz
+                            </a>
+                        </p>
+                        <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.9em;">
+                            點擊 ID 即可加入好友
+                        </p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; text-align: center;">
+                        <p style="color: #06C755; font-weight: 600; font-size: 1em; margin-bottom: 5px;">
+                            ⏰ 全年無休 24 小時服務
+                        </p>
+                        <p style="color: #999; font-size: 0.9em;">
+                            隨時為您解答任何問題
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 聯絡客服模態框 -->
-    <div id="contactModal" class="brand-modal">
+    <!-- 熱賣商品模態框 -->
+    <div id="hotProductsModal" class="brand-modal">
         <div class="brand-modal-content">
-            <span class="close-modal" onclick="closeContactModal()">&times;</span>
-            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">💁 聯絡客服</h2>
-            <div style="line-height: 1.8; color: #555;">
-                <p style="margin-bottom: 25px; text-align: center; font-size: 1.1em;">
-                    <strong>我們隨時為您服務！</strong>
+            <span class="close-modal" onclick="closeHotProductsModal()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">🔥 熱賣商品 TOP 5</h2>
+            <div style="line-height: 1.6; color: #555;">
+                <p style="margin-bottom: 25px; text-align: center; font-size: 1.05em; color: #666;">
+                    最受歡迎的精選商品，錯過可惜！
                 </p>
 
-                <div style="background: linear-gradient(135deg, #06C755 0%, #05b34a 100%); padding: 30px; border-radius: 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 8px 25px rgba(6, 199, 85, 0.3);">
-                    <p style="color: white; font-size: 1.3em; margin-bottom: 15px; font-weight: 600;">
-                        📱 Line 24小時客服
-                    </p>
-                    <p style="margin-bottom: 20px;">
-                        <a href="https://line.me/ti/p/@946vdjfz"
-                           target="_blank"
-                           style="display: inline-block; background: white; color: #06C755; padding: 15px 35px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.3em; transition: all 0.3s ease;">
-                            @946vdjfz
-                        </a>
-                    </p>
-                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95em;">
-                        點擊 ID 即可加入好友
-                    </p>
+                <div id="hotProductsList">
+                    <!-- 熱賣商品將由 JavaScript 動態載入 -->
                 </div>
 
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <p style="margin-bottom: 15px; text-align: center; font-weight: 600; color: #333;">
-                        ⏰ 客服時間
+                <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%); border-radius: 12px; text-align: center;">
+                    <p style="color: #e65100; font-weight: 600; margin-bottom: 10px; font-size: 1.1em;">
+                        🎁 想要購買熱賣商品？
                     </p>
-                    <p style="text-align: center; color: #06C755; font-weight: 600; font-size: 1.1em; margin-bottom: 5px;">
-                        全年無休 24 小時服務
-                    </p>
-                    <p style="text-align: center; color: #999; font-size: 0.9em;">
-                        隨時為您解答任何問題
+                    <p style="color: #666; font-size: 0.95em;">
+                        關閉此視窗，在下方商品區找到您喜歡的商品，加入購物車即可！
                     </p>
                 </div>
-
-                <div style="background: #fff3cd; padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107;">
-                    <p style="color: #856404; margin-bottom: 10px; font-weight: 600;">
-                        💡 常見問題
-                    </p>
-                    <p style="color: #856404; font-size: 0.95em; margin-bottom: 5px;">
-                        • 訂單查詢<br>
-                        • 付款問題<br>
-                        • 配送進度<br>
-                        • 商品資訊
-                    </p>
-                    <p style="color: #856404; font-size: 0.9em; margin-top: 10px;">
-                        請提供您的訂單編號，我們將盡快為您處理！
-                    </p>
-                </div>
-
-                <p style="margin-top: 25px; text-align: center; color: #666; font-size: 0.95em;">
-                    也歡迎加入我們的社群，與其他朋友一起交流！
-                </p>
-                <p style="text-align: center; margin-top: 10px;">
-                    <a onclick="closeContactModal(); openJoinUsModal();"
-                       style="color: #06C755; font-weight: 600; cursor: pointer; text-decoration: underline;">
-                        加入 Line 社群 →
-                    </a>
-                </p>
             </div>
         </div>
     </div>
@@ -2160,13 +2228,73 @@
             document.getElementById('joinUsModal').style.display = 'none';
         }
 
-        // Contact modal functions
-        function openContactModal() {
-            document.getElementById('contactModal').style.display = 'block';
+        // Hot Products modal functions
+        const hotProducts = [
+            {
+                id: 1,
+                rank: 1,
+                name: 'TWG 奶韻烏龍茶包',
+                description: '台灣烏龍茶為基底，牛奶香氣濃郁，茶韻飽滿豐富，回甘香甜',
+                image: 'https://drive.google.com/thumbnail?id=1kkqrdhXDfR2ZU3AXJy_C5njZPPJ2_Y1C&sz=w1000'
+            },
+            {
+                id: 20,
+                rank: 2,
+                name: 'IRVINS 魚皮（大包 230g）',
+                description: '新加坡國民零食！鹹蛋黃口味，酥脆爽口，一吃就停不下來',
+                image: 'https://drive.google.com/thumbnail?id=19_kPfhQxPzzgK6l_IDyjTJm8eVib8PG2&sz=w1000'
+            },
+            {
+                id: 13,
+                rank: 3,
+                name: 'Prima Taste 叻沙泡麵',
+                description: '新加坡最經典的叻沙風味泡麵，椰香濃郁，香辣開胃',
+                image: 'https://drive.google.com/thumbnail?id=1EGOMNhPCaxqmXMc87s6rwlUuGF7zWp3L&sz=w1000'
+            },
+            {
+                id: 7,
+                rank: 4,
+                name: 'TWG 小熊茶香軟糖 - 草莓茶',
+                description: 'TWG獨家小熊造型軟糖，結合草莓與茶香，甜而不膩',
+                image: 'https://drive.google.com/thumbnail?id=1V2KJeI-g0Z1scGJm2-G8d_IeMNRdozkp&sz=w1000'
+            },
+            {
+                id: 2,
+                rank: 5,
+                name: 'TWG 獅城早餐茶包',
+                description: '口感偏濃厚的紅茶，適合搭配早餐或下午茶，茶香醇厚',
+                image: 'https://drive.google.com/thumbnail?id=1_ViOm68YpBHXYn1hf19z6H8iCeEo64zj&sz=w1000'
+            }
+        ];
+
+        function openHotProductsModal() {
+            renderHotProducts();
+            document.getElementById('hotProductsModal').style.display = 'block';
         }
 
-        function closeContactModal() {
-            document.getElementById('contactModal').style.display = 'none';
+        function closeHotProductsModal() {
+            document.getElementById('hotProductsModal').style.display = 'none';
+        }
+
+        function renderHotProducts() {
+            const hotProductsList = document.getElementById('hotProductsList');
+            hotProductsList.innerHTML = hotProducts.map(product => {
+                const rankClass = `rank-${product.rank}`;
+                const rankEmoji = product.rank === 1 ? '🥇' : product.rank === 2 ? '🥈' : product.rank === 3 ? '🥉' : '';
+
+                return `
+                    <div class="hot-product-item">
+                        <div class="hot-product-rank ${rankClass}">
+                            ${rankEmoji}${product.rank}
+                        </div>
+                        <img src="${product.image}" alt="${product.name}" class="hot-product-image">
+                        <div class="hot-product-info">
+                            <div class="hot-product-name">${product.name}</div>
+                            <div class="hot-product-description">${product.description}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         // Close modal when clicking outside
@@ -2174,7 +2302,7 @@
             const brandModal = document.getElementById('brandModal');
             const rulesModal = document.getElementById('rulesModal');
             const joinUsModal = document.getElementById('joinUsModal');
-            const contactModal = document.getElementById('contactModal');
+            const hotProductsModal = document.getElementById('hotProductsModal');
 
             if (event.target == brandModal) {
                 brandModal.style.display = 'none';
@@ -2185,8 +2313,8 @@
             if (event.target == joinUsModal) {
                 joinUsModal.style.display = 'none';
             }
-            if (event.target == contactModal) {
-                contactModal.style.display = 'none';
+            if (event.target == hotProductsModal) {
+                hotProductsModal.style.display = 'none';
             }
         }
     </script>
