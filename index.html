@@ -1203,6 +1203,68 @@
             font-size: 0.95em;
             color: #666;
             line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .hot-product-cart-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .hot-product-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hot-product-quantity button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #000;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .hot-product-quantity button:hover {
+            background: #333;
+        }
+
+        .hot-product-quantity input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 6px;
+            font-size: 0.95em;
+        }
+
+        .hot-product-add-btn {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        .hot-product-add-btn:hover {
+            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+        }
+
+        .hot-product-add-btn:active {
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {
@@ -2282,6 +2344,11 @@
                 const rankClass = `rank-${product.rank}`;
                 const rankEmoji = product.rank === 1 ? '🥇' : product.rank === 2 ? '🥈' : product.rank === 3 ? '🥉' : '';
 
+                // 從 products 陣列中找到完整的商品資料
+                const fullProduct = products.find(p => p.id === product.id);
+                const price = fullProduct ? fullProduct.price : 0;
+                const spec = fullProduct ? fullProduct.description : '';
+
                 return `
                     <div class="hot-product-item">
                         <div class="hot-product-rank ${rankClass}">
@@ -2291,10 +2358,65 @@
                         <div class="hot-product-info">
                             <div class="hot-product-name">${product.name}</div>
                             <div class="hot-product-description">${product.description}</div>
+                            <div style="color: #d32f2f; font-weight: 700; font-size: 1.1em; margin-bottom: 8px;">
+                                NT$ ${price} <span style="color: #999; font-size: 0.85em; font-weight: 400;">${spec}</span>
+                            </div>
+                            <div class="hot-product-cart-area">
+                                <div class="hot-product-quantity">
+                                    <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
+                                    <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
+                                    <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
+                                </div>
+                                <button class="hot-product-add-btn" onclick="addHotProductToCart(${product.id})">
+                                    🛒 加入購物車
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
             }).join('');
+        }
+
+        // 更新熱賣商品數量
+        function updateHotProductQuantity(productId, change) {
+            const input = document.getElementById(`hot-qty-${productId}`);
+            let currentValue = parseInt(input.value) || 1;
+            currentValue += change;
+            if (currentValue < 1) currentValue = 1;
+            input.value = currentValue;
+        }
+
+        // 從熱賣商品添加到購物車
+        function addHotProductToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const quantityInput = document.getElementById(`hot-qty-${productId}`);
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            // 檢查購物車中是否已有此商品
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    description: product.description,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+
+            updateCartBadge();
+
+            // 顯示成功提示
+            alert(`已將 ${quantity} 個「${product.name}」加入購物車！`);
+
+            // 重置數量為1
+            quantityInput.value = 1;
         }
 
         // Close modal when clicking outside
