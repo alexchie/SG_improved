@@ -383,59 +383,79 @@
 
         /* 導航選單 */
         .nav-menu {
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            padding: 15px 0;
+            background: white;
+            padding: 0;
             margin: -30px -30px 30px -30px;
             border-radius: 20px 20px 0 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .nav-menu ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
+            justify-content: stretch;
+            align-items: stretch;
+            gap: 0;
             margin: 0;
             padding: 0;
         }
 
         .nav-menu li {
             position: relative;
+            flex: 1;
+            border-right: 1px solid #000;
+        }
+
+        .nav-menu li:last-child {
+            border-right: none;
         }
 
         .nav-menu a {
-            color: white;
+            color: #555;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1.05em;
             font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 12px 20px;
             transition: all 0.3s ease;
             cursor: pointer;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            background: #f5f5f5;
+            color: #333;
         }
 
         .nav-menu a:active {
-            transform: translateY(0);
+            background: #e8e8e8;
         }
 
         /* 響應式導航 */
         @media (max-width: 768px) {
             .nav-menu ul {
                 flex-wrap: wrap;
-                gap: 15px;
-                padding: 5px 15px;
+            }
+
+            .nav-menu li {
+                flex: 1 1 50%;
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+            }
+
+            .nav-menu li:nth-child(2),
+            .nav-menu li:nth-child(4) {
+                border-right: none;
+            }
+
+            .nav-menu li:nth-child(3),
+            .nav-menu li:nth-child(4) {
+                border-bottom: none;
             }
 
             .nav-menu a {
                 font-size: 0.95em;
-                padding: 8px 15px;
+                padding: 10px 15px;
             }
         }
 
