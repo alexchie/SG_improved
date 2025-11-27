@@ -381,6 +381,64 @@
             transform: translateY(0) scale(1);
         }
 
+        /* 導航選單 */
+        .nav-menu {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            padding: 15px 0;
+            margin: -30px -30px 30px -30px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a:active {
+            transform: translateY(0);
+        }
+
+        /* 響應式導航 */
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 5px 15px;
+            }
+
+            .nav-menu a {
+                font-size: 0.95em;
+                padding: 8px 15px;
+            }
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1075,6 +1133,16 @@
     </div>
 
     <div class="container">
+        <!-- 導航選單 -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a onclick="openBrandModal()">品牌理念</a></li>
+                <li><a onclick="openRulesModal()">代購規則</a></li>
+                <li><a onclick="openJoinUsModal()">加入我們</a></li>
+                <li><a onclick="openContactModal()">聯絡客服</a></li>
+            </ul>
+        </nav>
+
         <div class="logo-container">
             <!-- 飛機動畫容器 -->
             <div class="airplane-animation-container">
@@ -1862,6 +1930,185 @@
         </div>
     </div>
 
+    <!-- 代購規則模態框 -->
+    <div id="rulesModal" class="brand-modal">
+        <div class="brand-modal-content">
+            <span class="close-modal" onclick="closeRulesModal()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">📋 代購規則</h2>
+            <div style="line-height: 1.8; color: #555;">
+                <p style="margin-bottom: 20px;">
+                    <strong>歡迎使用 AB Direct Select 代購服務！</strong>為確保您的購物體驗順暢，請詳閱以下規則：
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>📦 訂購流程</strong><br>
+                    1. 選擇商品並加入購物車<br>
+                    2. 填寫訂單資訊並完成付款<br>
+                    3. 我們將在截止日期後統一採購<br>
+                    4. 商品抵達台灣後，將盡快安排寄送
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>⏰ 代購時程</strong><br>
+                    • 每批代購都有截止日期，請留意商品頁面標示<br>
+                    • 截止後約 7-14 個工作天送達台灣<br>
+                    • 到貨後 2-3 個工作天內完成寄送
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>💰 付款方式</strong><br>
+                    • 銀行轉帳<br>
+                    • Line Pay<br>
+                    • 街口支付<br>
+                    （詳細帳戶資訊將於訂單確認後提供）
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>🚚 運費說明</strong><br>
+                    • 單筆訂單滿 NT$ 600 免運費<br>
+                    • 未滿 NT$ 600 酌收運費 NT$ 80<br>
+                    • 外島地區運費另計
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>🔄 退換貨政策</strong><br>
+                    • 食品類商品恕不接受退換貨（除商品瑕疵）<br>
+                    • 若商品有瑕疵，請於收到貨 3 天內聯繫客服<br>
+                    • 請提供照片以利處理
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    <strong>⚠️ 注意事項</strong><br>
+                    • 所有商品皆為代購商品，無法指定效期<br>
+                    • 商品售價可能因匯率波動調整<br>
+                    • 如遇缺貨將主動聯繫並協助退款
+                </p>
+
+                <p style="margin-top: 20px; text-align: center; font-weight: 600; color: #333;">
+                    如有任何疑問，歡迎透過客服聯繫我們！
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加入我們模態框 -->
+    <div id="joinUsModal" class="brand-modal">
+        <div class="brand-modal-content">
+            <span class="close-modal" onclick="closeJoinUsModal()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">🤝 加入我們</h2>
+            <div style="line-height: 1.8; color: #555;">
+                <p style="margin-bottom: 20px; text-align: center; font-size: 1.2em;">
+                    <strong>成為 AB Direct Select 的一員！</strong>
+                </p>
+
+                <p style="margin-bottom: 20px; text-align: center;">
+                    加入我們的 Line 匿名社群，第一時間獲得：
+                </p>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <p style="margin-bottom: 10px;">✨ <strong>最新商品資訊</strong></p>
+                    <p style="margin-bottom: 10px;">🎁 <strong>限定優惠活動</strong></p>
+                    <p style="margin-bottom: 10px;">📢 <strong>開團通知</strong></p>
+                    <p style="margin-bottom: 10px;">💬 <strong>與其他團友交流</strong></p>
+                    <p style="margin-bottom: 0;">🍴 <strong>美食分享與推薦</strong></p>
+                </div>
+
+                <p style="margin-bottom: 25px; text-align: center;">
+                    <a href="https://line.me/ti/g2/D3VCIE43VK_0RxUmeUq5Ql49ci0pul9GODja5Q?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+                       target="_blank"
+                       style="display: inline-block; background: #06C755; color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);">
+                        💬 立即加入 Line 社群
+                    </a>
+                </p>
+
+                <p style="text-align: center; color: #999; font-size: 0.95em;">
+                    免費加入 • 匿名參與 • 隨時退出
+                </p>
+
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
+                    <p style="text-align: center; color: #666; font-size: 0.95em; margin-bottom: 10px;">
+                        還有問題嗎？歡迎透過客服聯繫我們
+                    </p>
+                    <p style="text-align: center;">
+                        <a onclick="closeJoinUsModal(); openContactModal();"
+                           style="color: #06C755; font-weight: 600; cursor: pointer; text-decoration: underline;">
+                            前往聯絡客服 →
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聯絡客服模態框 -->
+    <div id="contactModal" class="brand-modal">
+        <div class="brand-modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">💁 聯絡客服</h2>
+            <div style="line-height: 1.8; color: #555;">
+                <p style="margin-bottom: 25px; text-align: center; font-size: 1.1em;">
+                    <strong>我們隨時為您服務！</strong>
+                </p>
+
+                <div style="background: linear-gradient(135deg, #06C755 0%, #05b34a 100%); padding: 30px; border-radius: 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 8px 25px rgba(6, 199, 85, 0.3);">
+                    <p style="color: white; font-size: 1.3em; margin-bottom: 15px; font-weight: 600;">
+                        📱 Line 官方客服
+                    </p>
+                    <p style="margin-bottom: 20px;">
+                        <a href="https://line.me/ti/p/@946vdjfz"
+                           target="_blank"
+                           style="display: inline-block; background: white; color: #06C755; padding: 15px 35px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.3em; transition: all 0.3s ease;">
+                            @946vdjfz
+                        </a>
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95em;">
+                        點擊 ID 即可加入好友
+                    </p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <p style="margin-bottom: 15px; text-align: center; font-weight: 600; color: #333;">
+                        ⏰ 客服時間
+                    </p>
+                    <p style="text-align: center; color: #555; margin-bottom: 5px;">
+                        週一至週五：10:00 - 19:00
+                    </p>
+                    <p style="text-align: center; color: #555; margin-bottom: 5px;">
+                        週六：10:00 - 17:00
+                    </p>
+                    <p style="text-align: center; color: #999; font-size: 0.9em;">
+                        （週日及國定假日休息）
+                    </p>
+                </div>
+
+                <div style="background: #fff3cd; padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <p style="color: #856404; margin-bottom: 10px; font-weight: 600;">
+                        💡 常見問題
+                    </p>
+                    <p style="color: #856404; font-size: 0.95em; margin-bottom: 5px;">
+                        • 訂單查詢<br>
+                        • 付款問題<br>
+                        • 配送進度<br>
+                        • 商品資訊
+                    </p>
+                    <p style="color: #856404; font-size: 0.9em; margin-top: 10px;">
+                        請提供您的訂單編號，我們將盡快為您處理！
+                    </p>
+                </div>
+
+                <p style="margin-top: 25px; text-align: center; color: #666; font-size: 0.95em;">
+                    也歡迎加入我們的社群，與其他朋友一起交流！
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    <a onclick="closeContactModal(); openJoinUsModal();"
+                       style="color: #06C755; font-weight: 600; cursor: pointer; text-decoration: underline;">
+                        加入 Line 社群 →
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Show brand modal
         function showBrandModal() {
@@ -1873,11 +2120,56 @@
             document.getElementById('brandModal').style.display = 'none';
         }
 
+        // Open brand modal (for navigation)
+        function openBrandModal() {
+            document.getElementById('brandModal').style.display = 'block';
+        }
+
+        // Rules modal functions
+        function openRulesModal() {
+            document.getElementById('rulesModal').style.display = 'block';
+        }
+
+        function closeRulesModal() {
+            document.getElementById('rulesModal').style.display = 'none';
+        }
+
+        // Join Us modal functions
+        function openJoinUsModal() {
+            document.getElementById('joinUsModal').style.display = 'block';
+        }
+
+        function closeJoinUsModal() {
+            document.getElementById('joinUsModal').style.display = 'none';
+        }
+
+        // Contact modal functions
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('brandModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            const brandModal = document.getElementById('brandModal');
+            const rulesModal = document.getElementById('rulesModal');
+            const joinUsModal = document.getElementById('joinUsModal');
+            const contactModal = document.getElementById('contactModal');
+
+            if (event.target == brandModal) {
+                brandModal.style.display = 'none';
+            }
+            if (event.target == rulesModal) {
+                rulesModal.style.display = 'none';
+            }
+            if (event.target == joinUsModal) {
+                joinUsModal.style.display = 'none';
+            }
+            if (event.target == contactModal) {
+                contactModal.style.display = 'none';
             }
         }
     </script>
