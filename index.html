@@ -1206,67 +1206,6 @@
             margin-bottom: 12px;
         }
 
-        .hot-product-cart-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .hot-product-quantity {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hot-product-quantity button {
-            width: 32px;
-            height: 32px;
-            border: none;
-            background: #000;
-            color: white;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: background 0.3s;
-        }
-
-        .hot-product-quantity button:hover {
-            background: #333;
-        }
-
-        .hot-product-quantity input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 6px;
-            font-size: 0.95em;
-        }
-
-        .hot-product-add-btn {
-            padding: 8px 20px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-        }
-
-        .hot-product-add-btn:hover {
-            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
-        }
-
-        .hot-product-add-btn:active {
-            transform: translateY(0);
-        }
-
         @media (max-width: 768px) {
             .logo-container img {
                 max-width: 140px;
@@ -2243,15 +2182,6 @@
                 <div id="hotProductsList">
                     <!-- 熱賣商品將由 JavaScript 動態載入 -->
                 </div>
-
-                <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%); border-radius: 12px; text-align: center;">
-                    <p style="color: #e65100; font-weight: 600; margin-bottom: 10px; font-size: 1.1em;">
-                        🎁 想要購買熱賣商品？
-                    </p>
-                    <p style="color: #666; font-size: 0.95em;">
-                        關閉此視窗，在下方商品區找到您喜歡的商品，加入購物車即可！
-                    </p>
-                </div>
             </div>
         </div>
     </div>
@@ -2358,19 +2288,15 @@
                         <div class="hot-product-info">
                             <div class="hot-product-name">${product.name}</div>
                             <div class="hot-product-description">${product.description}</div>
-                            <div style="color: #d32f2f; font-weight: 700; font-size: 1.1em; margin-bottom: 8px;">
-                                NT$ ${price} <span style="color: #999; font-size: 0.85em; font-weight: 400;">${spec}</span>
+                            <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
+                                NT$ ${price}
                             </div>
-                            <div class="hot-product-cart-area">
-                                <div class="hot-product-quantity">
-                                    <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
-                                    <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
-                                    <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
-                                </div>
-                                <button class="hot-product-add-btn" onclick="addHotProductToCart(${product.id})">
-                                    🛒 加入購物車
-                                </button>
+                            <div class="quantity-control">
+                                <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
+                                <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
+                                <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
                             </div>
+                            <button class="add-to-cart" onclick="addHotProductToCart(${product.id})">加入購物車</button>
                         </div>
                     </div>
                 `;
