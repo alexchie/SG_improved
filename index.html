@@ -388,6 +388,31 @@
             margin: -30px -30px 30px -30px;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* 固定導航選單 */
+        .nav-menu.fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            max-width: 1200px;
+            z-index: 1000;
+            border-radius: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 當導航選單固定時，為下方內容添加佔位空間 */
+        .nav-placeholder {
+            display: none;
+            height: 0;
+        }
+
+        .nav-placeholder.active {
+            display: block;
+            height: 48px; /* 導航選單的高度 */
         }
 
         .nav-menu ul {
@@ -1242,8 +1267,11 @@
     </div>
 
     <div class="container">
+        <!-- 導航選單佔位 -->
+        <div class="nav-placeholder"></div>
+
         <!-- 導航選單 -->
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="navMenu">
             <ul>
                 <li><a onclick="openBrandModal()">品牌理念</a></li>
                 <li><a onclick="openRulesModal()">代購規則</a></li>
@@ -2187,6 +2215,31 @@
     </div>
 
     <script>
+        // 固定導航選單功能
+        window.addEventListener('DOMContentLoaded', function() {
+            const navMenu = document.getElementById('navMenu');
+            const navPlaceholder = document.querySelector('.nav-placeholder');
+            const container = document.querySelector('.container');
+
+            // 取得導航選單的初始位置
+            let navOffset = navMenu.offsetTop;
+
+            // 監聽滾動事件
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop >= navOffset) {
+                    // 當滾動超過導航選單位置時，固定它
+                    navMenu.classList.add('fixed');
+                    navPlaceholder.classList.add('active');
+                } else {
+                    // 當滾動回到頂部時，取消固定
+                    navMenu.classList.remove('fixed');
+                    navPlaceholder.classList.remove('active');
+                }
+            });
+        });
+
         // Show brand modal
         function showBrandModal() {
             document.getElementById('brandModal').style.display = 'block';
